@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus AI Assistant - Smart Campus Information</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="main-title">📚 CAMPUS UPDATES</h1>
+                <p class="subtitle">AI-Powered Smart Campus Information Hub</p>
+            </div>
+            <div class="user-info">
+                <span id="userName">Welcome, Student</span>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Left Section - Campus Updates -->
+            <section class="updates-section">
+                <div class="query-box">
+                    <input 
+                        type="text" 
+                        id="queryInput" 
+                        placeholder="Ask me anything... e.g., 'What deadlines do I have this week?'"
+                        class="query-input"
+                    >
+                    <button id="queryBtn" class="query-btn">Ask AI</button>
+                </div>
+
+                <!-- Campus Updates Display -->
+                <div class="updates-container">
+                    <div class="updates-header">
+                        <h2>📋 Latest Campus Updates</h2>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-filter="all">All</button>
+                            <button class="filter-btn" data-filter="academic">Academic</button>
+                            <button class="filter-btn" data-filter="event">Events</button>
+                            <button class="filter-btn" data-filter="scholarship">Scholarships</button>
+                            <button class="filter-btn" data-filter="workshop">Workshops</button>
+                        </div>
+                    </div>
+
+                    <div id="updatesList" class="updates-list">
+                        <!-- Updates will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- AI Assistant Response -->
+                <div id="aiResponse" class="ai-response hidden">
+                    <div class="ai-header">
+                        <h3>🤖 AI Assistant Response</h3>
+                        <button class="close-btn" onclick="closeAIResponse()">✕</button>
+                    </div>
+                    <div id="responseContent" class="response-content"></div>
+                </div>
+            </section>
+
+            <!-- Right Section - Student Profile & Calendar -->
+            <aside class="sidebar">
+                <!-- Student Profile Dashboard -->
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <div class="profile-avatar">👤</div>
+                        <div class="profile-details">
+                            <h3 id="profileName">John Doe</h3>
+                            <p id="profileCourse">Computer Science - Year 2</p>
+                            <p id="profileEmail">john.doe@university.edu</p>
+                        </div>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="stat">
+                            <span class="stat-label">Interests</span>
+                            <span id="interests" class="stat-value">Tech, AI, Events</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Pending Tasks</span>
+                            <span id="pendingTasks" class="stat-value">5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- To-Do Calendar -->
+                <div class="todo-calendar">
+                    <div class="calendar-header">
+                        <h3>📅 Upcoming Deadlines</h3>
+                        <button class="add-task-btn" onclick="openAddTaskModal()">+ Add</button>
+                    </div>
+                    <div id="todoList" class="todo-list">
+                        <!-- To-do items will be added here -->
+                    </div>
+                </div>
+
+                <!-- Important Stats -->
+                <div class="stats-card">
+                    <h3>📊 This Week</h3>
+                    <div class="stat-item">
+                        <span>Deadlines</span>
+                        <span class="stat-number" id="weekDeadlines">3</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Events</span>
+                        <span class="stat-number" id="weekEvents">2</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Workshops</span>
+                        <span class="stat-number" id="weekWorkshops">1</span>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Add Task Modal -->
+    <div id="addTaskModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Deadline to To-Do</h2>
+                <button class="close-btn" onclick="closeAddTaskModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="taskTitle" placeholder="Task title" class="modal-input">
+                <input type="date" id="taskDate" class="modal-input">
+                <select id="taskCategory" class="modal-input">
+                    <option value="">Select Category</option>
+                    <option value="academic">Academic</option>
+                    <option value="event">Event</option>
+                    <option value="workshop">Workshop</option>
+                    <option value="personal">Personal</option>
+                </select>
+                <textarea id="taskDescription" placeholder="Description (optional)" class="modal-input"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" onclick="closeAddTaskModal()">Cancel</button>
+                <button class="btn-submit" onclick="addTask()">Add to To-Do</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
